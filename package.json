@@ -1,0 +1,34 @@
+{
+  "name": "ndp-video-perf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cKellyDesign/ndp-video-perf.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cKellyDesign/ndp-video-perf/issues"
+  },
+  "homepage": "https://github.com/cKellyDesign/ndp-video-perf",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-contrib-requirejs": "^0.4.4",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-env": "^0.4.4",
+    "grunt-express-server": "^0.5.1",
+    "load-grunt-tasks": "^3.4.0"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "request": "^2.67.0",
+    "requirejs": "^2.1.22",
+    "underscore": "^1.8.3"
+  }
+}
