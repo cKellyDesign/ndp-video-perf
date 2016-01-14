@@ -14,6 +14,6 @@ router.setRouts(app);
 app.set('port', 9090);
 app.set('case sensitive routing', false);
 
-var server = app.listen(app.get('port') || 8080, function () {
+var server = app.listen(process.env.PORT || 9090, function () {
     console.log("Server started on port " + server.address().port);
 });
