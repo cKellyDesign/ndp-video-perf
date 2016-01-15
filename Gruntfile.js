@@ -29,13 +29,13 @@ module.exports = function (grunt) {
 
         env: {
             dev: {
-                
+                dbRoot: "mongodb://localhost/ndp-video-perf"
             },
             prod: {
-
+                dbRoot: "/"
             }
         }
     });
 
-    grunt.registerTask('default', ['express', 'watch']);
+    grunt.registerTask('default', ['env:dev', 'express', 'watch']);
 };

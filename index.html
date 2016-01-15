@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>NDP Perf</title>
+</head>
+<body>
+  <h1>NDP Perf</h1>
+
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script type="text/javascript">
+    $.ajax({
+      type: "POST",
+      url: "/playerEvent",
+      data: JSON.stringify({ eType: "test", startNow: 3, endNow: 5 }),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(data) { console.log("SUCCESS!! DATA SENT - ", data); },
+      failure: function(err) { console.log("FAIL!! Err - ", err); }
+    });
+  </script>
+</body>
+</html>
