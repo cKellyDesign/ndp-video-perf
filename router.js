@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
     db = require('./models/db'),
+    bodyParser = require('body-parser'),
     PlayerEvent = require('./models/playerEvent');
 
 exports.setRouts = function (app) {
@@ -33,5 +34,13 @@ exports.setRouts = function (app) {
         PlayerEvent.find({}, function (err, events) {
             res.send(events);
         });
+    });
+
+    app.use('/endpoint', function (req, res) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+        console.log('ENDPOINT RECEIVED MESSAGE\n', req.body);
+        res.status(200).json({ message: 'data received', data: req.body });
     });
 };
