@@ -1,33 +1,8 @@
-var mongoose = require('mongoose'),
-    db = require('./models/db'),
-    bodyParser = require('body-parser'),
-    PlayerEvent = require('./models/playerEvent');
+var bodyParser = require('body-parser');
 
 exports.setRouts = function (app) {
     app.get('/', function(req, res){
         res.sendFile(__dirname + '/index.html');
-    });
-    app.get('/success', function(req, res){
-        res.send('SUCCESS!!!');
-    });
-
-
-    app.use('/playerEvent', function (req, res) {
-        console.log(req.body);
-
-        var eType = req.body.eType,
-            startNow = req.body.startNow,
-            endNow = req.body.endNow;
-
-        new PlayerEvent({
-            eType: eType,
-            startNow: startNow,
-            endNow: endNow
-        }).save(function(err){
-            if (err) res.send(err);
-            res.json({ message: 'playerEv Created!' });
-        });
-
     });
 
     app.use('/allEvents', function (req, res) {
@@ -36,7 +11,7 @@ exports.setRouts = function (app) {
         });
     });
 
-    app.use('/endpoint', function (req, res) {
+    app.use('/perfReport', function (req, res) {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
