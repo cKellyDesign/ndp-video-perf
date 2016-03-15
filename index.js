@@ -12,11 +12,11 @@ requirejs.config({
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-router.setRouts(app);
+router.setRoutes(app);
 
-app.set('port', 9090);
+app.set('port', 9010);
 app.set('case sensitive routing', false);
 
-var server = app.listen(process.env.PORT || 9090, function () {
+var server = app.listen(process.env.PORT || 9010, function () {
     console.log("Server started on port " + server.address().port);
 });
