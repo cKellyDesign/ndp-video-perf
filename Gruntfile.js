@@ -8,7 +8,7 @@ module.exports = function (grunt) {
         express: {
             main: {
                 options: {
-                    port: 9090,
+                    port: 9010,
                     script: './index.js',
                     spawn: false,
                     opts: []
@@ -18,7 +18,7 @@ module.exports = function (grunt) {
 
         watch: {
             express: {
-                files: ['./index.js', './router.js'],
+                files: ['./index.js', './router.js', './handlers/**.js'],
                 tasks: ['express:main'],
                 options: {
                     livereload: false,

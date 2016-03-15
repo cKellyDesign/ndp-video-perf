@@ -1,6 +1,7 @@
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser'),
+    dataHandler = require('./handlers/DataHandler');
 
-exports.setRouts = function (app) {
+exports.setRoutes = function (app) {
     app.get('/', function(req, res){
         res.sendFile(__dirname + '/index.html');
     });
@@ -11,11 +12,20 @@ exports.setRouts = function (app) {
         });
     });
 
-    app.use('/perfReport', function (req, res) {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    app.use('/perfReport', corsHandler, dataHandler); // todo: add report forwarding handler to send full data to SPLUNK
 
-        console.log('ENDPOINT RECEIVED MESSAGE\n', req.body);
-        res.status(200).json({ message: 'data received', data: req.body });
+    app.use('/bin/showads.js', corsHandler, function (req, res) {
+        res.sendFile(__dirname + '/bin/showads.js');
     });
 };
+
+function corsHandler (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+    if (req.body.guid) {
+        next();
+    } else {
+        res.send('');
+    }
+}

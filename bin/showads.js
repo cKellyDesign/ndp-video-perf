@@ -1,0 +1,1 @@
+if (window.console && window.console.log) { console.log('no ad block present'); }
